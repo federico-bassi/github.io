@@ -1,1 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Federico Bassi — PhD Candidate in Economics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #f8f6f1;
+      --white:    #ffffff;
+      --ink:      #1c1a17;
+      --muted:    #6b6760;
+      --rule:     #e2dfd8;
+      --accent:   #8b4a2b;
+      --nav-h:    64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── NAV ───────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 6vw, 5rem);
+    }
+
+    .nav-name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── LAYOUT ────────────────────────────────── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 6vw, 2rem);
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+
+    p { margin-bottom: 1rem; color: var(--ink); }
+    p:last-child { margin-bottom: 0; }
+
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent); }
+
+    /* ── HOME / HERO ───────────────────────────── */
+    #home {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+      padding-top: 5rem;
+    }
+
+    .hero-text h1 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-text .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .hero-text .bio { font-size: 1.05rem; line-height: 1.8; }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      padding: 0.45rem 1rem;
+      border-radius: 2px;
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .hero-links a:hover { border-color: var(--ink); color: var(--ink); }
+
+    .profile-photo {
+      width: 160px;
+      height: 200px;
+      border-radius: 2px;
+      background: var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-photo .placeholder {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.5;
+      padding: 1rem;
+    }
+
+    /* ── RESEARCH ──────────────────────────────── */
+    .paper {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .paper:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .paper-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+
+    .paper-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .paper-abstract { font-size: 0.95rem; color: var(--muted); }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 0.2rem 0.55rem;
+      color: var(--muted);
+      margin-right: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    /* ── TEACHING ──────────────────────────────── */
+    .course {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .course:last-child { border-bottom: none; }
+
+    .course-name { font-family: 'EB Garamond', Georgia, serif; font-size: 1.05rem; }
+    .course-role { font-size: 0.82rem; color: var(--muted); }
+    .course-year { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+
+    /* ── CV ────────────────────────────────────── */
+    .cv-note {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .cv-download {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.65rem 1.5rem;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+    .cv-download:hover { opacity: 0.8; color: var(--cream); }
+
+    /* ── CONTACT ───────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .contact-block .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      font-weight: 400;
+    }
+
+    .contact-block .value { font-size: 1rem; }
+
+    /* ── FOOTER ────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 600px) {
+      #home {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+      }
+      .profile-photo { width: 120px; height: 150px; }
+      #home { grid-template-columns: 1fr; }
+      .profile-photo { order: -1; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="#home">Bassi</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero-text">
+        <h1>[Your Name] Bassi</h1>
+        <p class="subtitle">PhD Candidate in Economics &nbsp;·&nbsp; Erasmus University Rotterdam</p>
+        <p class="bio">
+          Welcome! I am a first-year PhD Candidate in Economics at Erasmus University Rotterdam,
+          under the supervision of
+          <a href="#">Georg Granic</a> and <a href="#">Matthijs van Veelen</a>.
+        </p>
+        <div class="hero-links">
+          <a href="mailto:bassi@ese.eur.nl">Email</a>
+          <a href="#cv">CV</a>
+          <!-- Add more links as needed: -->
+          <!-- <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a> -->
+        </div>
+      </div>
+      <div class="profile-photo">
+        <!-- Replace src with path to your photo, e.g. src="files/profile.jpg" -->
+        <!-- <img src="files/profile.jpg" alt="Profile photo" /> -->
+        <p class="placeholder">Your<br>photo<br>here</p>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2>Research</h2>
+
+      <!-- Working paper example — duplicate this block for each paper -->
+      <div class="paper">
+        <p class="paper-title">Working Paper Title</p>
+        <p class="paper-meta">Work in Progress</p>
+        <p class="paper-abstract">
+          A brief abstract or description of your paper goes here. Explain the research question,
+          methodology, and main findings in two to three sentences.
+        </p>
+        <span class="tag">Behavioural</span>
+        <span class="tag">Experimental</span>
+      </div>
+
+      <!-- Add more papers here -->
+
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching">
+      <h2>Teaching</h2>
+
+      <!-- Repeat .course block for each course -->
+      <div class="course">
+        <div>
+          <p class="course-name">Course Name</p>
+          <p class="course-role">Teaching Assistant &nbsp;·&nbsp; Erasmus University Rotterdam</p>
+        </div>
+        <p class="course-year">2024–25</p>
+      </div>
+
+      <div class="course">
+        <p class="course-name" style="color: var(--muted); font-style: italic; font-size: 0.95rem;">
+          More courses will appear here
+        </p>
+      </div>
+
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+      <h2>CV</h2>
+      <p class="cv-note">
+        You can download a full copy of my curriculum vitae below.
+        It includes my education, research experience, teaching, and other academic activities.
+      </p>
+      <!-- Replace href with the path to your PDF, e.g. href="files/cv_bassi.pdf" -->
+      <a class="cv-download" href="files/cv_bassi.pdf" target="_blank">Download CV (PDF)</a>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-block">
+          <p class="label">Email</p>
+          <p class="value"><a href="mailto:bassi@ese.eur.nl">bassi@ese.eur.nl</a></p>
+        </div>
+        <div class="contact-block">
+          <p class="label">Office</p>
+          <p class="value">
+            Erasmus School of Economics<br>
+            Erasmus University Rotterdam<br>
+            Rotterdam, The Netherlands
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bassi &nbsp;·&nbsp; Built with GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
